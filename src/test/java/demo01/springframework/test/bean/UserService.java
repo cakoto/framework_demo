@@ -1,4 +1,4 @@
-package demo.springframework.test.bean;
+package demo01.springframework.test.bean;
 
 /**
  * @ClassName UserService

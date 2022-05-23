@@ -1,8 +1,8 @@
-package demo.springframework.test;
+package demo01.springframework.test;
 
-import demo.springframework.BeanDefinition;
-import demo.springframework.BeanFactory;
-import demo.springframework.test.bean.UserService;
+import demo01.springframework.BeanDefinition;
+import demo01.springframework.BeanFactory;
+import demo01.springframework.test.bean.UserService;
 import org.junit.Test;
 
 /**
