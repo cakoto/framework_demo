@@ -1,4 +1,4 @@
-package demo02.springframework.beans.factory;
+package demo.springframework.beans.factory;
 
 /**
  * @ClassName BeanFactory
@@ -8,4 +8,5 @@ package demo02.springframework.beans.factory;
  **/
 public interface BeanFactory {
 	public Object getBean(String beanName);
+	public Object getBean(String beanName, Object... args);
 }

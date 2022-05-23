@@ -1,6 +1,6 @@
-package demo02.springframework.beans.factory.support;
+package demo.springframework.beans.factory.support;
 
-import demo02.springframework.beans.factory.config.BeanDefinition;
+import demo.springframework.beans.factory.config.BeanDefinition;
 
 /**
  * @ClassName BeanDefinitionRegistry

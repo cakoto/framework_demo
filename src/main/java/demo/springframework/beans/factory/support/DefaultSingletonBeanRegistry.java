@@ -1,6 +1,6 @@
-package demo02.springframework.beans.factory.support;
+package demo.springframework.beans.factory.support;
 
-import demo02.springframework.beans.factory.config.SingletonBeanRegistry;
+import demo.springframework.beans.factory.config.SingletonBeanRegistry;
 
 import java.util.HashMap;
 import java.util.Map;

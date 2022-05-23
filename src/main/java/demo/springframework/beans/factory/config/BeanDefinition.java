@@ -1,4 +1,4 @@
-package demo02.springframework.beans.factory.config;
+package demo.springframework.beans.factory.config;
 
 /**
  * @ClassName BeanDefinition

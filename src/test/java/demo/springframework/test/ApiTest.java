@@ -1,8 +1,8 @@
-package demo02.springframework.test;
+package demo.springframework.test;
 
-import demo02.springframework.beans.factory.config.BeanDefinition;
-import demo02.springframework.beans.factory.support.DefaultListableBeanFactory;
-import demo02.springframework.test.bean.UserService;
+import demo.springframework.beans.factory.config.BeanDefinition;
+import demo.springframework.beans.factory.support.DefaultListableBeanFactory;
+import demo.springframework.test.bean.UserService;
 import org.junit.Test;
 
 /**
@@ -25,7 +25,7 @@ public class ApiTest {
 		beanFactory.registerBeanDefinition("UserService", userBeanDefinition);
 
 		// 4. 第一次获取bean
-		UserService userService = (UserService) beanFactory.getBean("UserService");
+		UserService userService = (UserService) beanFactory.getBean("UserService", "鸟人");
 		userService.queryInfo();
 
 		// 5. 后续获取bean(单例)
