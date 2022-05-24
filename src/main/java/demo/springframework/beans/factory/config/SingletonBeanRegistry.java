@@ -2,7 +2,7 @@ package demo.springframework.beans.factory.config;
 
 /**
  * @ClassName SingletonBeanRegistry
- * @Description TODO
+ * @Description 单例注册，接口 规定模式
  * @Author gyf
  * @Date 2022/5/22
  **/

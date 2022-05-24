@@ -7,8 +7,15 @@ package demo.springframework.test.bean;
  * @Date 2022/5/23
  **/
 public class UserService {
-	String name;
+	private String name;
+	private String uId;
+	private UserDao userDao;
 
+	public UserService(){}
+
+	public void queryUserInfo() {
+		System.out.println("查询用户信息：" + userDao.queryUserName(uId));
+	}
 	public UserService(String name) {
 		this.name = name;
 	}

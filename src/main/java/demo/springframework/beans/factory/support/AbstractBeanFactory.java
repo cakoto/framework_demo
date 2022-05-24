@@ -42,5 +42,6 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
 	public abstract BeanDefinition getBeanDefinition(String beanName);
 	public abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args);
+	public abstract void applyPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition);
 
 }
