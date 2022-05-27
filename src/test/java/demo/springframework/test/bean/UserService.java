@@ -1,12 +1,15 @@
 package demo.springframework.test.bean;
 
+import demo.springframework.beans.factory.DisposableBean;
+import demo.springframework.beans.factory.InitializingBean;
+
 /**
  * @ClassName UserService
  * @Description TODO
  * @Author gyf
  * @Date 2022/5/23
  **/
-public class UserService {
+public class UserService implements InitializingBean, DisposableBean {
 	private String name;
 	private String uId;
 	private UserDao userDao;
@@ -27,14 +30,22 @@ public class UserService {
 		System.out.println("查询用户信息:"+name);
 	}
 
-	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder("");
-		sb.append(name).append(uId).append(location).append(company);
-		return sb.toString();
-	}
-
 	public void setLocation(String s) {
 		this.location = s;
+	}
+
+	@Override
+	public String toString() {
+		return "" + name + uId + location + company;
+	}
+
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("执行：UserService.destroy");
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("执行：UserService.afterPropertiesSet");
 	}
 }

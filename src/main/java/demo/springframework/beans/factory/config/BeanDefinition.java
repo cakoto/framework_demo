@@ -9,8 +9,16 @@ import demo.springframework.beans.PropertyValues;
  * @Date 2022/5/22
  **/
 public class BeanDefinition {
+
 	private final PropertyValues propertyValues;
+
 	private Class<?> beanClass;
+
+	// xxx.xml中bean的initMethod会存到这里
+	private String initMethodName;
+
+	// xxx.xml中bean的destroyMethod会存到这里
+	private String destroyMethodName;
 
 	public BeanDefinition(Class<?> beanClass) {
 		this.beanClass = beanClass;
@@ -33,4 +41,21 @@ public class BeanDefinition {
 	public PropertyValues getPropertyValues() {
 		return propertyValues;
 	}
+
+	public String getInitMethodName() {
+		return initMethodName;
+	}
+
+	public void setInitMethodName(String initMethodName) {
+		this.initMethodName = initMethodName;
+	}
+
+	public String getDestroyMethodName() {
+		return destroyMethodName;
+	}
+
+	public void setDestroyMethodName(String destroyMethodName) {
+		this.destroyMethodName = destroyMethodName;
+	}
+
 }
