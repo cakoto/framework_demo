@@ -57,6 +57,13 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 		loadBeanDefinitions(resource);
 	}
 
+	@Override
+	public void loadBeanDefinitions(String... locations) throws BeanException {
+		for (String location: locations) {
+			loadBeanDefinitions(location);
+		}
+	}
+
 	/**
 	 * 读取xml和element的解析
 	 * 通过对元素的解析，以此获取 Bean 配置以及配置中的 id、name、class、value、ref 信息。

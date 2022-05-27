@@ -7,6 +7,7 @@ import demo.springframework.beans.factory.config.BeanDefinition;
 import demo.springframework.beans.factory.config.BeanReference;
 import demo.springframework.beans.factory.support.DefaultListableBeanFactory;
 import demo.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import demo.springframework.context.support.ClassPathXmlApplicationContext;
 import demo.springframework.core.io.DefaultResourceLoader;
 import demo.springframework.core.io.Resource;
 import demo.springframework.test.bean.UserDao;
@@ -118,6 +119,13 @@ public class ApiTest {
 
 		// 3. 获取bean对象
 		UserService userService = (UserService) beanFactory.getBean("userService", UserService.class);
+		userService.queryUserInfo();
+	}
+
+	@Test
+	public void test_xmlWithContext() {
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+		UserService userService = (UserService) applicationContext.getBean("userService", UserService.class);
 		userService.queryUserInfo();
 	}
 

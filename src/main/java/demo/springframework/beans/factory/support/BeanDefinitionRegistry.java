@@ -37,6 +37,6 @@ public interface BeanDefinitionRegistry {
 	 *
 	 * @return bean definition array
 	 */
-	String[] getBeanDefinitionName();
+	String[] getBeanDefinitionNames();
 
 }

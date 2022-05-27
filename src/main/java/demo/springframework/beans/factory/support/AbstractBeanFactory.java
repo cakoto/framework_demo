@@ -1,18 +1,23 @@
 package demo.springframework.beans.factory.support;
 
 import demo.springframework.beans.BeanException;
-import demo.springframework.beans.factory.BeanFactory;
 import demo.springframework.beans.factory.config.BeanDefinition;
+import demo.springframework.beans.factory.config.BeanPostProcessor;
+import demo.springframework.beans.factory.config.ConfigurableBeanFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 抽象类定义模板方法
+ * 抽象类定义模板方法，实现了ConfigurableBeanFactory的接口
  * @ClassName AbstractBeanFactory
  * @Description 抽象类
  * @Author gyf
  * @Date 2022/5/22
  **/
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
+	private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
 	/**
 	 * 检查单例对象是否已经缓存，如果缓存则直接返回结果，否则创建新的bean
 	 * @param beanName bean的名字
@@ -51,4 +56,17 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 	protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args);
 	protected abstract void applyPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition);
 
+	@Override
+	public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
+		this.beanPostProcessors.remove(beanPostProcessor);
+		this.beanPostProcessors.add(beanPostProcessor);
+	}
+
+	/**
+	 * Return the list of BeanPostProcessors that will get applied
+	 * to beans created with this factory.
+	 */
+	public List<BeanPostProcessor> getBeanPostProcessors() {
+		return this.beanPostProcessors;
+	}
 }

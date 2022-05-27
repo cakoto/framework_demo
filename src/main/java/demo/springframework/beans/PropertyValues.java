@@ -12,6 +12,10 @@ import java.util.Objects;
  **/
 public class PropertyValues {
 
+	/**
+	 * 由于这个是一个列表，后面进行修改的会放置在后面，在填充属性值的时候是从前往后遍历的
+	 * 所有能够覆盖原先存在的值，达到正确赋值的目的
+	 */
 	private final List<PropertyValue> propertyValueList = new ArrayList<>();
 
 	public void addPropertyValue(PropertyValue propertyValue) {

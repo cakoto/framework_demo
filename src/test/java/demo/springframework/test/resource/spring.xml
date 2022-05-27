@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans>
+
     <bean id="userDao" class="demo.springframework.test.bean.UserDao"/>
+
     <bean id="userService" class="demo.springframework.test.bean.UserService">
         <property name="uId" value="10001"/>
+        <property name="company" value="腾讯"/>
+        <property name="location" value="深圳"/>
         <property name="userDao" ref="userDao"/>
     </bean>
+
+    <!--增强配置-->
+    <bean class="demo.springframework.test.bean.common.MyBeanFactoryPostProcessor"/>
+    <bean class="demo.springframework.test.bean.common.MyBeanPostProcessor"/>
+
 </beans>

@@ -8,8 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Bean Factory的默认实现，可对其进行拓展实现自定义bean工厂
+ * 其是一个完整的ioc容器，需求复杂时可以拓展这个类进行ioc实现
+ *
  * @ClassName DefaultListableBeanFactory
- * @Description TODO
+ * @Description Bean Factory的默认实现
  * @Author gyf
  * @Date 2022/5/22
  **/
@@ -36,8 +39,25 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	}
 
 	@Override
-	public String[] getBeanDefinitionName() {
+	@SuppressWarnings("unchecked")
+	public <T> Map<String, T> getBeansOfType(Class<T> type) throws BeanException {
+		Map<String, T> res = new HashMap<>();
+		beanDefinitionMap.forEach((beanName, beanDefinition) -> {
+			Class<?> beanClass = beanDefinition.getBeanClass();
+			if (type.isAssignableFrom(beanClass)) {
+				res.put(beanName, (T)getBean(beanName));
+			}
+		});
+		return res;
+	}
+
+	@Override
+	public String[] getBeanDefinitionNames() {
 		return beanDefinitionMap.keySet().toArray(new String[0]);
 	}
 
+	@Override
+	public void preInstantiateSingletons() throws BeanException {
+		beanDefinitionMap.keySet().forEach(this::getBean);
+	}
 }
